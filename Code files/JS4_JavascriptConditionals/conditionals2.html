@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grades</title>
+</head>
+<body>
+    <div id ="output"></div>
+    <script>
+        let numberGrade = prompt("What is the numerical grade?");
+        let letterGrade = "";
+        
+
+        if (numberGrade>=90){
+             letterGrade = "A";
+        }else if(numberGrade>=80){
+             letterGrade = "B";
+        }else if(numberGrade>=70){
+             letterGrade = "C";
+        }else if(numberGrade>=60){
+             letterGrade = "D";
+        }else {
+            letterGrade = "F";
+        }
+
+        document.getElementById("output").innerHTML = letterGrade;
+    </script>    
+        
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+<body>
+    <div id="main">
+        <p id="title">This is title text</p>
+        <button id="btnLarger">Larger</button>
+        <button id="btnSmaller">Smaller</button>
+    </div>
+
+    <script>
+        const btnLarger = document.getElementById("btnLarger");
+        const btnSmaller = document.getElementById("btnSmaller");
+
+        let size = 1;
+        btnLarger.addEventListener("click", (e) => {
+            console.log(e);
+            size += .25;
+            document.getElementById("title").style.fontSize = size + "em";
+            if(e.shiftKey == true){
+                alert("Thanks for holding the ShiftKey");
+            }
+        });
+
+        btnSmaller.addEventListener("click", () => {
+            size -= .25;
+            document.getElementById("title").style.fontSize = size + "em";
+        });
+
+        document.addEventListener("keypress", (e) =>{
+            var name = e.key;
+            var code = e.code;
+
+            document.getElementById("title").innerHTML = "Key: " + name + " Code: " + code;
+        })
+    </script>
+</body>
+</html>

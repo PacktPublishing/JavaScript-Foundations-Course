@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+<body>
+    <label for="zip">Zip Code:</label>
+    <input type="number" id="zip" />
+    <button id="btnGetInfo">Get Info</button>
+    <div id="info"></div>
+    <script>
+
+        const btnGetInfo = document.getElementById('btnGetInfo');
+
+        btnGetInfo.onclick = () => {
+            const zip = document.getElementById('zip').value;
+            let zipURL = `http://api.zippopotam.us/us/${zip}`;
+            console.log(zipURL);
+            const fetchPromise = fetch(zipURL);
+            fetchPromise.then(response => response.json())
+            .then(data=> {
+                console.log(data);
+                const city = data.places[0]["place name"];
+                const state = data.places[0].state;
+                document.getElementById("info").innerHTML = `<h1>${city}, ${state}</h1>`;
+            })
+        }
+    </script>
+    
+</body>
+</html>

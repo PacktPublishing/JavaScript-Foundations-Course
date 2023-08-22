@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Templates</title>
+</head>
+<body>
+    <output id="out"></output>
+    <script>
+        const output = document.getElementById("out");
+
+        // Quotes
+        let george = `"George is a crazy monkey", said the man in the yellow hat.`;
+        output.innerHTML = george;
+        output.innerHTML += "<br /><br />";
+
+        //Multiline Strings
+        let poem = 
+        `With Rue my Heart is Laden<br />
+        For Golden Friends I had<br />
+        For Many a Rose-Lipped Maiden<br />
+        And Many a Lightfoot Lad<br />`;
+        output.innerHTML += poem;
+        output.innerHTML += "<br /><br />";
+
+        //String Interpolation
+        let firstName = "Mark";
+        let lastName = "Lassoff";
+        const fullName = `${firstName} ${lastName}`;
+        output.innerHTML += fullName;
+        output.innerHTML += "<br /><br />";
+        output.innerHTML += `67 * 3 + 12 / 4.33 = ${67 * 3 + 12 / 4.33}`;
+
+        //HTML Templates
+        const header = "US Airlines";
+        const airlines = ["American", "Delta", "United", "Southwest", "JetBlue"];
+
+        let html = `<h2>${header}</h2>`;
+        hmtl += `<ul>`;
+        for(let x of airlines) {
+            html += `<li>${x}</li>`;
+        }
+        html += `</ul>`;
+
+        output.innerHTML += html;
+        
+    </script>
+</body>
+</html>

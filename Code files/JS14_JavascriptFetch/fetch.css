@@ -1,0 +1,23 @@
+body{
+    padding-left: 35%;
+    padding-right: 35%;
+}
+h1{
+    border: 3px solid black;
+    background-color: deepskyblue;
+}
+#weather{
+    background-color: aquamarine;
+    border: 3px solid black;
+}
+#temp{
+    padding-left: 27%;
+    border: 1px solid black;
+    background-color: blue;
+}
+#box{
+    background-color: cadetblue;
+    padding-left: 10%;
+    width: 50%;
+    border:  3px solid black;
+}

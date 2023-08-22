@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark's Videos</title>
+    <script>
+        window.onload = () => {
+            document.getElementById('btnGetVideos').addEventListener('click', getVideos);
+        }
+
+        getVideos = () => {
+            document.getElementById('result').innerHTML = "";
+            var url = "https://mlassoff.github.io/syndicatedvideos";
+
+            fetch(url)
+            .then(function(response) {
+                return response.text();
+            }).then(function(videos) {
+                displayPlayer(videos);
+            });
+        }
+
+        displayPlayer = (videos) => {
+            console.log(videos);
+            parser = new DOMParser();
+            xmlDoc = parser.parseFromString(videos, "text/xml");
+            console.log(xmlDoc);
+            items = xmlDoc.getElementByTagName("item");
+            console.log(items);
+            for(let x = 0; x < items.length; x++) {
+                console.log(items[x]);
+                const title = items[x];
+                getElementByTagName("title")[0].firstChild.nodeValuel;
+                const description = items[x].getElementByTagName("description")[0].firstChild.nodeValue;
+                const media = items[x].getElementByTagName("media:content")[0].getElementByTagName("media:thumbnail")[0].getAttribute("url");
+                console.log(media);
+                const videoURL = items[x].getElementByTagName("enclosure")[0].getAttribute("url");
+                buildCard(title, description, media, videoURL);
+            }
+        }
+
+        buildCard = (title, description, media, videoURL) => {
+            const div = document.createElement('div');
+            div.className = "card";
+            const img = document.createElement('img');
+            img.setAttribute('src', media);
+            const vidTitle = document.createElement('h2');
+            const titleText = document.createTextNode(title);
+            vidTitle.appendChild(titleText);
+            const vidDescription = document.createElement('p');
+            const descriptionText = document.createTextNode(description);
+            vidDescription.appendChild(descriptionText);
+            div.appendChild(img);
+            div.appendChild(vidTitle);
+            div.appendChild(vidDescription);
+            const button = document.createElement('button');
+            button.innerHTML = "Play";
+            button.onclick = () => {
+                document.getElementById("videoPlayer").src = videoURL;
+                document.getElementById("videoPlayer").play();
+                document.getElementById("vidTitle").innerHTML = title;
+                document.getElementById("videoPlayer").style.display = "block";
+            }
+
+            div.appendChild(button);
+            console.log(div);
+            document.getElementById("result").appendChild(div);
+        }
+        
+    </script>
+</head>
+<body>
+    <button id="btnGetVideos">Get Videos</button>
+    <div id="result"></div>
+</body>
+</html>

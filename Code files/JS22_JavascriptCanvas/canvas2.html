@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="canvas2.css" rel="stylesheet" type="css/text" />
+    <script src="canvas2.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas"></canvas>
+    <div id="saveArea">
+        <img id="canvasImg" />
+        <h2>Right Click to Save...</h2>
+        <button id="btnBack">Back</button>
+    </div>
+    <div id="tools">
+        <table>
+            <tr>
+                <td>
+                    <label for="colorChange">Color: </label>
+                    <input type="color" id="colorChange" />
+                </td>
+                <td>
+                    <label for="lineWidth">Width: </label>
+                    <input type="range" id="lineWidth" min="1" max="10" step="1" />
+                </td>
+                <td>
+                    <button id="btnSave">Save</button>
+                    <button id="btnClear">Clear</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        textarea {
+            width: 100%;
+            font-size: 1.15em;
+            display: block;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <p>Enter your String</p>
+    <textarea id="userString"></textarea>
+    <button id="btnString">Process String</button>
+    <div id="output"></div>
+
+    <script>
+        const btnString = document.getElementById('btnString');
+
+        btnString.onclick = (e) => {
+            let out = "";
+            let userString = document.getElementById("userString").value;
+
+            let stringCount = userString.lenth;
+            out += '<h2>String Information</h2>';
+            out += 'Characters: ' + stringCount + '<br />';
+
+            //Position and Unicode
+            out += '<h3>Character Position</h3>';
+            let x = 0;
+            while(x < stringCount) {
+                out += x + ': ' + userString.charAt(x) +
+                ' Unicode: ' + userString.charCodeAt(x) + '<br />';
+                x++;
+            }
+
+            //End with
+            if(userString.endsWith(".")) {
+                out += "<p>It DOES end with .</p>";
+            } else {
+                out += "It does NOT end with .</p>";
+            }
+
+            //Character Position
+            out += "<p>The first 'e' is at a position " + userString.indexOf('e') + ".";
+            out += "<br /> The last 'e' is at position " + userString.lastIndexOf('e') + "</p>";
+
+            //Character Replacement
+            out += "<p>Replacement Made: <br />" + userString.replace(/[A-Z]/g, "X");
+            out +=  "</p>";
+
+            //Split in to an Array
+            let family = "Mark Brett Joan Rick Kerry";
+            let familyArray = family.split(' ');
+            for(let x = 0; x < familyArray.length; x++) {
+                out += familyArray[x] + "<br />";
+                out += "";
+            }
+
+            document.getElementById("output").innerHTML = out;
+        }
+
+        
+    </script>
+</body>
+</html>

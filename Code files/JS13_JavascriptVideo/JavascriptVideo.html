@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>JavaScript Video Player</title>
+ <style>
+    video {
+        width: 100%;
+    }
+ </style>
+</head>
+<body>
+    
+    <video>
+        <source src="wind-rose-mine-mine-mine-with-lyrics.mp4" />
+    </video>
+    <output id="timeout">0</output>
+
+    <button id="btnPlay">Play</button>
+    <button id="btnStop">Stop</button>
+    <button id="btnPause">Pause</button>
+
+ 
+    <script>
+        let myVideo = document.getElementsByTagName("video");
+        myVideo = myVideo[0];
+
+        const btnPlay = document.getElementById("btnPlay");
+        const btnStop = document.getElementById("btnStop");
+        const btnPause = document.getElementById("btnPause");
+
+        let myInterval = setInterval(postTime, 1000);
+
+        function postTime(e) {
+            let time = Math.round(myVideo.currentTime);
+            document.getElementById("timeout").innerHTML = "Time: "+ time;
+        }
+
+        btnPlay.addEventListener("click", (e) => {
+            myVideo.play();
+        });
+
+        btnStop.addEventListener("click", (e) => {
+            myVideo.pause();
+            myVideo.currentTime = 0;
+        });
+
+        btnPause.addEventListener("click", (e) => {
+            myVideo.pause();
+        });
+
+    </script>
+</body>
+</html>

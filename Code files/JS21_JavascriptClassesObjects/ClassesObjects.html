@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes</title>
+    <script src="bar.js"></script>
+    <style>
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        div {
+            border-bottom: 2px solid black;
+            border-right: 2px solid black;
+            border-top: 2px solid black;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bar Graph</h1>
+
+    <output id="out"></output>
+    <script>
+        let out = document.getElementById("out");
+
+        let Bar1 = new Bar(50, 350, "red");
+        let Bar2 = new Bar(50, 500, "blue");
+        let Bar3 = new Bar(50, 750, "green");
+        let Bar4 = new Bar(50, 500, "yellow");
+        let Bar5 = new Bar(50, 350, "brown");
+        let Bar6 = new Bar(50, 225, "darkgray");
+        let Bar7 = new Bar(50, 530, "orange");
+        let bars = [Bar1, Bar2, Bar3, Bar4, Bar5, Bar6, Bar7];
+
+        for(x in bars) {
+            out.innerHTML += bars[x].drawBar();
+        }
+    </script>
+</body>
+</html>

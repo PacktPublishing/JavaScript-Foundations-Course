@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Fetch 02</title>
+   <style>
+      table {
+         border-collapse: collapse;
+      }
+      
+      th, td {
+         border: 1px solid black;
+      }
+   </style>
+</head>
+<body>
+   <div id="output">
+      <table id="cities">
+         <tr><th>Latitude</th><th>Longitude</th><th>City</th><th>State</th></tr>
+      </table>
+   </div>
+   <script>
+      fetch("cities.csv")
+      .then(x => x.text())
+      .then(y => displayText(y));
+
+      let row = 1;
+      displayText = (text) => {
+         let rows = text.split(/\r?\n|\r/);
+         for(let x = 1; x < rows.length-2; x++) {
+            let row = rows[x].split(',');
+            
+            let lat = row[0] + "&deg;" + row[1] + "' ";
+            lat += row[2] = row[3];
+
+            let long = row[4] + "&deg;" + row[5] + "' ";
+            long += row[6] + row[7];
+
+            let city = row[8];
+            let state = row[9];
+
+            let tableRow = '<tr>' + '<td>' + lat + '</td><td>' + long + '</td><td>'+ city + '</td><td>'+ state + '</td></tr>';
+            tableRow = tableRow.replaceAll('"', '');
+            document.getElementById('cities').innerHTML += tableRow;
+         }
+      }
+   </script>
+</body>
+</html>

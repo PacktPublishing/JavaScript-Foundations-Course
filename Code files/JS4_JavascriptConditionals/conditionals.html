@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Conditionals</title>
+</head>
+<body>
+    <div id="output"></div>
+
+    <script>
+        let age = prompt("How old are you?");
+
+        if(age >= 21){
+            document.getElementById("output").innerHTML = "<p>You are old enough to drink Alcohol! Bottoms Up!</p>";
+        }else {
+            document.getElementById("output").innerHTML = "<p>You are not premitted to consume Alcohol</p>";
+        }
+    </script>
+</body>
+</html>
